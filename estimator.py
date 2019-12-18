@@ -449,7 +449,8 @@ class TfPoseEstimator:
 #                 else:
 #                     fontScale =1
 #                     cv2.putText(npimg,'NOSOS_1', (int(flat[28]),int(flat[29]-10)),cv2.FONT_ITALIC, fontScale,(255,0,255), 2, cv2.LINE_AA) 
-#             else:
+            else:
+                sos_f=0
 #                 fontScale =1
 #                 cv2.putText(npimg,'NOSOS_2', (int(flat[28]),int(flat[29]-10)),cv2.FONT_ITALIC, fontScale,(255,0,255), 2, cv2.LINE_AA) 
             
@@ -458,7 +459,8 @@ class TfPoseEstimator:
                     fontScale = 1
                     cv2.putText(npimg,'SOS', (int(flat[28]),int(flat[29]-10)),cv2.FONT_ITALIC, fontScale,(0,0,255), 2, cv2.LINE_AA)
                     sos_f = 1
-#             else:
+            else:
+                sos_f=0
 #                 fontScale =1
 #                 cv2.putText(npimg,'NOSOS_3', (int(flat[28]),int(flat[29]-10)),cv2.FONT_ITALIC, fontScale,(255,0,255), 2, cv2.LINE_AA) 
 #######################################################
@@ -474,24 +476,25 @@ class TfPoseEstimator:
                         # 절대값사용
                         leg_flag=1
                         fontScale = 1
-                        cv2.putText(npimg,('FallDown %s  %s'  %(leg[0],leg[1])), (int(flat[28]),int(flat[29]-10)),cv2.FONT_ITALIC, fontScale,(0,255,255), 2, cv2.LINE_AA) 
+#                         cv2.putText(npimg,('FallDown %s  %s'  %(leg[0],leg[1])), (int(flat[28]),int(flat[29]-10)),cv2.FONT_ITALIC, fontScale,(0,255,255), 2, cv2.LINE_AA) 
+                        cv2.putText(npimg,'FallDown', (int(flat[28]),int(flat[29]-10)),cv2.FONT_ITALIC, fontScale,(0,255,255), 2, cv2.LINE_AA) 
                         fall_f =1
                 else:
                     fontScale = 1
-                    cv2.putText(npimg,'No leg_flag', (int(flat[28]),int(flat[29]-10)),cv2.FONT_ITALIC, fontScale,(0,255,255), 2, cv2.LINE_AA)
+                    cv2.putText(npimg,'General', (int(flat[28]),int(flat[29]-10)),cv2.FONT_ITALIC, fontScale,(0,255,255), 2, cv2.LINE_AA)
             else:
-             #이벤트 발생 했을떄,
-                if event == 20:
+             #이벤트 발생 했을떄, 
+                if event == 5:
                     #초기화
                     leg_flag=0
                     event=0
                     leg = [0.0 for i in range(4)]
                     fontScale = 1
-                    cv2.putText(npimg,('FallDown %s  %s'  %(leg[0],leg[1])), (int(flat[28]),int(flat[29]-10)),cv2.FONT_ITALIC, fontScale,(0,255,255), 2, cv2.LINE_AA)
+                    cv2.putText(npimg,'FallDown', (int(flat[28]),int(flat[29]-10)),cv2.FONT_ITALIC, fontScale,(0,255,255), 2, cv2.LINE_AA) 
                     fall_f =1
                 else:
                     fontScale = 1
-                    cv2.putText(npimg,('FallDown %s  %s'  %(leg[0],leg[1])), (int(flat[28]),int(flat[29]-10)),cv2.FONT_ITALIC, fontScale,(0,255,255), 2, cv2.LINE_AA)
+                    cv2.putText(npimg,'FallDown', (int(flat[28]),int(flat[29]-10)),cv2.FONT_ITALIC, fontScale,(0,255,255), 2, cv2.LINE_AA) 
                     event=event+1
                     fall_f = 1
 
